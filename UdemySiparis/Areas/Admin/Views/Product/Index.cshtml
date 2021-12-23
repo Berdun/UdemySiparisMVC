@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Ürün Listesi</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Product" asp-action="Crup" class="btn btn-primary ">
+                <span>Yeni Ürün Ekle</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+
+        <table class="table table-bordered table-striped my-2">
+            <thead>
+                <tr>
+                    <th>
+                        Ürün Adı
+                    </th>
+                     <th>
+                        Fiyat
+                    </th>
+                    <th>
+                        İşlemler
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>
+                            <a asp-controller="Product" asp-action="Crup" asp-route-id="@product.Id" class="btn btn-primary">
+                                Güncelle
+                            </a>
+
+                             <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">
+                                Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
