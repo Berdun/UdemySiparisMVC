@@ -83,7 +83,7 @@ namespace UdemySiparis.Areas.Admin.Controllers
                          file.CopyTo(fileStream);
                     }
 
-                    productVM.Product.Picture = @"img\products\" + fileName + extension;
+                    productVM.Product.Picture = @"\img\products\" + fileName + extension;
 
                }
 

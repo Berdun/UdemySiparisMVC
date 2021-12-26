@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<OrderProduct>
 
 <div class="container">
     <div class="row">
@@ -15,33 +15,33 @@
         <table class="table table-bordered table-striped my-2">
             <thead>
                 <tr>
-                    <th width="100px">
-                        Ürün Resmi
+                    <th width="10px">                        
+                        Sipariş Id
                     </th>
                     <th>
-                        Ürün Adı
+                        Ad Soyad
                     </th>
-                     <th>
+                    <th>
                         Fiyat
                     </th>
-                    <th width="150px">
+                    <th>
                         İşlemler
                     </th>
                 </tr>
             </thead>
-            <tbody>                
-                @foreach (var product in Model)
+            <tbody>
+                @foreach (var orderProduct in Model)
                 {
                     <tr>
-                        <td><img src="@product.Picture" width="80px" /></td>
-                        <td class="pt-4">@product.Name</td>
-                        <td class="pt-4">@product.Price</td>
+                        <td><img src="@orderProduct.Id" width="80px" /></td>
+                        <td>@orderProduct.Name</td>
+                        <td>@orderProduct.OrderPrice</td>
                         <td>
-                            <a asp-controller="Product" asp-action="Crup" asp-route-id="@product.Id" class="btn btn-primary">
+                            <a asp-controller="Product" asp-action="Crup" asp-route-id="@orderProduct.Id" class="btn btn-primary">
                                 Güncelle
                             </a>
 
-                             <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">
+                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');" asp-controller="Product" asp-action="Delete" asp-route-id="@orderProduct.Id" class="btn btn-danger">
                                 Sil
                             </a>
                         </td>

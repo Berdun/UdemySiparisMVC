@@ -1,0 +1,87 @@
+﻿@model UdemySiparis.Models.ViewModels.CartVM
+
+<form method="post">
+
+    <div class="row">
+        <div class="col-lg-8 m-0">
+
+            @foreach (var item in Model.ListCart)
+            {
+                 <div class="card p-0 mb-1">
+                <div class="card-header  bg-primary text-light m-0 p-0 row ">
+                    <div class="col-12 col-md-6">
+                        <h6 class="text-white mt-2">@item.Product.Name</h6>
+                    </div>                    
+                </div>
+                <div class="card-body">
+                    <div class="rounded pb-2">
+                        <div class="row">
+                            <div class="col-12 col-lg-3 text-center" style="border-right:1px solid #0066cc; ">
+                                <img src="@item.Product.Picture" width="100%" class="rounded" />
+                            </div>
+
+                            <div class="col-12 col-lg-8 align-self-center">
+                                <div class="row ">
+                                    <div class="col-lg-4 m-0">
+                                       @item.Product.Name
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span> <a href="#" class="btn btn-danger mx-2"> - </a>  <span> @item.Count </span> <span> <a href="#" class="btn btn-primary mx-2"> + </a>  </span> </span>
+                                    </div>
+                                    <div class="col-lg-4 m-0">
+                                        <span>TOPLAM : @item.Price.ToString("c")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+            }
+
+                
+
+        </div>
+
+
+        <div class="col-lg-3 ">
+            <div class="card  container p-0 ">
+                <div class="card-header  bg-primary text-light m-0 p-0 row ">
+                    <div class="col-12 col-md-6">
+                        <span class="text-white mt-1">Sipariş Özeti</span>
+                    </div>
+                </div>
+                <div class="card-body container">
+                    <div class="container rounded pb-2">
+                        <div class="row">
+
+                            <div class="col-12 col-lg-12 align-self-center">
+                                <div class="row ">
+                                    <div class="col-lg-12 mt-2">
+                                        <span>Sepet Tutarı :</span> <span> @Model.OrderProduct.OrderPrice.ToString("c")</span>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-lg-12 mt-2">
+                                        <span>Ödenecek Tutar :</span> <span> @Model.OrderProduct.OrderPrice.ToString("c") </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-12 align-self-center">
+                                <div class="row ">
+                                    <div class="col-lg-12 m-0">
+                                        <br />
+                                        <br />
+                                        <a asp-action="AddToOrder" class="btn btn-success form-control">Onayla</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</form>
