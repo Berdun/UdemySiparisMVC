@@ -17,8 +17,24 @@ namespace UdemySiparis.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var orderList = _unitOfWork.OrderProduct.GetAll(x=>x.OrderStatus != "Teslim Edildi");
+            var orderList = _unitOfWork.OrderProduct.GetAll(x=>x.OrderStatus != "Delivered");
             return View(orderList);
         }
+
+
+        public IActionResult Details(int orderId)
+        {
+            OrderVM = new OrderVM
+            {
+                OrderProduct = _unitOfWork.OrderProduct.GetFirstOrDefault(o => o.Id == orderId, includeProperties: "AppUser"),
+                OrderDetails = _unitOfWork.OrderDetails.GetAll(d => d.OrderProductId == orderId, includeProperties: "Product")
+            };
+            return View(OrderVM);
+        }
+
+
     }
 }
+
+
+//v97

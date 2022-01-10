@@ -26,7 +26,7 @@
                                        @item.Product.Name
                                     </div>
                                     <div class="col-lg-4">
-                                        <span> <a href="#" class="btn btn-danger mx-2"> - </a>  <span> @item.Count </span> <span> <a href="#" class="btn btn-primary mx-2"> + </a>  </span> </span>
+                                        <span> <a asp-action="decrease" asp-route-cartId="@item.Id" class="btn btn-danger mx-2"> - </a>  <span> @item.Count </span> <span> <a asp-action="increase" asp-route-cartId="@item.Id" class="btn btn-primary mx-2"> + </a>  </span> </span>
                                     </div>
                                     <div class="col-lg-4 m-0">
                                         <span>TOPLAM : @item.Price.ToString("c")</span>

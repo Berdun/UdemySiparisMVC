@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using UdemySiparis.Data.Repository.IRepository;
 using UdemySiparis.Models;
@@ -6,6 +7,7 @@ using UdemySiparis.Models;
 namespace UdemySiparis.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    
     public class HomeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -40,21 +42,20 @@ namespace UdemySiparis.Areas.Customer.Controllers
             var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
             cart.AppUserId = claim.Value;
 
-            Cart cartDb = _unitOfWork.Cart.GetFirstOrDefault(p=>p.AppUserId == claim.Value && p.ProductId == cart.ProductId);
+            Cart cartDb = _unitOfWork.Cart.GetFirstOrDefault(p=>p.AppUserId == claim.Value && p.ProductId == cart.ProductId);            
 
-            _unitOfWork.Cart.Add(cart);
-            _unitOfWork.Save();
-
-            //if (cartDb == null)
-            //{
-                
-            //    //Kaydet - Sessionda Sepetteki ürün adetini sakla
-            //}
-            //else
-            //{
-            //    //Countu Gelen kadar artır Kaydet
-            //}
-
+            if (cartDb == null)
+            {
+                _unitOfWork.Cart.Add(cart);
+                _unitOfWork.Save();
+                int cartCount = _unitOfWork.Cart.GetAll(u => u.AppUserId == claim.Value).ToList().Count();
+                HttpContext.Session.SetInt32("SessionCartCount", cartCount);
+            }
+            else
+            {
+                cartDb.Count += cart.Count;
+                _unitOfWork.Save();
+            }  
             return RedirectToAction("Index");
         }
 

@@ -6,7 +6,7 @@
             <h2>Ürün Listesi</h2>
         </div>
         <div class="col-6">
-           
+          
         </div>
     </div>
     <div class="row">
@@ -35,11 +35,11 @@
                         <td>@orderProduct.Name</td>
                         <td>@orderProduct.OrderPrice</td>
                         <td>
-                            <a asp-area="Admin" asp-controller="Order" asp-action="Crup" asp-route-id="@orderProduct.Id" class="btn btn-primary">
+                            <a asp-area="Customer" asp-controller="Order" asp-action="Crup" asp-route-id="@orderProduct.Id" class="btn btn-primary">
                                 Update
                             </a>
 
-                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');"  asp-area="Admin" asp-controller="Order" asp-action="Delete" asp-route-id="@orderProduct.Id" class="btn btn-danger">
+                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');" asp-area="Customer" asp-controller="Order" asp-action="Delete" asp-route-id="@orderProduct.Id" class="btn btn-danger">
                                 Delete
                             </a>
                         </td>
