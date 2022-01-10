@@ -1,0 +1,34 @@
+﻿@model Product
+
+<h2>Yeni Ürün Ekle</h2>
+<form method="post" enctype="multipart/form-data">
+
+    <div class="row my-1">
+        <label asp-for="Name"></label>
+        <input asp-for="Name"  class="form-control"/>
+    </div>
+
+    <div class="row my-1">
+        <label asp-for="Description"></label>
+        <input asp-for="Description"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Price"></label>
+        <input asp-for="Price"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Barcode"></label>
+        <input asp-for="Barcode"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="CategoryId"></label>
+        <input asp-for="CategoryId"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Picture"></label>
+        <input type="file" id="uploadImg" name="upImg"  class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+</form>

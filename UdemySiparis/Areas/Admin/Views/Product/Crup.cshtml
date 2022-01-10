@@ -1,0 +1,45 @@
+﻿@model UdemySiparis.Models.ViewModels.ProductVM
+
+<h2>Ürün @(Model.Product.Id <= 0 ? "Add" : "Edit")</h2>
+<form method="post" enctype="multipart/form-data">  
+    <input asp-for="Product.Id" type="hidden" />
+    <input asp-for="Product.Picture" type="hidden" />
+
+    @if (@Model != null)
+    {
+        <div class="col-6">
+            <img src="@Model.Product.Picture" width="250px" />
+        </div>
+    }
+
+    <div class="row my-1">
+        <label asp-for="Product.Name"></label>
+        <input asp-for="Product.Name"  class="form-control"/>
+    </div>
+
+    <div class="row my-1">
+        <label asp-for="Product.Description"></label>
+        <input asp-for="Product.Description"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Product.Price"></label>
+        <input asp-for="Product.Price"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Product.Barcode"></label>
+        <input asp-for="Product.Barcode"  class="form-control"/>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Product.CategoryId"></label>
+        <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+            <option disabled selected> --Please Select a Category-- </option>
+        </select>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Product.Picture"></label>
+        <input type="file" id="file" name="file"  accept="image/*" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">@(Model.Product.Id <= 0 ? "Add" : "Edit")</button>
+
+</form>

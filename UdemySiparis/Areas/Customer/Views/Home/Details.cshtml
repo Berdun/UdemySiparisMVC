@@ -1,0 +1,53 @@
+﻿@model Cart
+<form method="post">
+    <input hidden asp-for="ProductId" />
+        <div class="card  container ">
+            <div class="card-header bg-primary text-light ml-0  row ">
+                <div class="col-12 col-md-6">
+                    <h1 class="text-white">@Model.Product.Name</h1>
+                </div>
+                <div class="col-12 col-md-6 text-end pb-4">
+                    <span class="badge bg-warning pt-2" style="height:30px;">@Model.Product.Category.Name</span>
+                </div>
+            </div>
+            <div class="card-body row container">
+                <div class="container rounded pb-2">
+                    <div class="row">
+                        <div class="col-12 col-lg-3 text-center" style="border-right:1px solid #0066cc; ">
+                            <img src="@Model.Product.Picture" width="100%" class="rounded" />
+                        </div>
+
+                        <div class="col-8 col-lg-8 offset-lg-1 ">
+
+                            <div class="row pl-2">
+                                <div class="col-2"><h5 > <span class="text-primary">Barkod </span></h5></div>
+                               <div class="col-10"><h5 class="pb-2 ">:  @Model.Product.Barcode</h5></div>
+                            </div>
+                            <div class="row pl-2">
+                                <div class="col-2"><h5 class="pb-2 "><span class="text-primary">Price </span></h5></div>
+                                <div class="col-10"><h5 class="pb-2 ">: @Model.Product.Price</h5></div>                              
+                            </div>                          
+                             <div class="row pl-2">
+                                <div class="col-2"><h5 class="pb-2 "><span class="text-primary">Product Detail</span></h5></div>
+                                <div class="col-10"><h5 class="pb-2 ">: @Model.Product.Description</h5></div>                              
+                            </div>   
+                            <div class="row pt-4 pl-2">
+                                <div class="col-2 text-primary"><h4>Count</h4></div>
+                                <div class="col-10"><input asp-for="Count" class="form-control"  /></div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <div class="row">
+                    <div class="col-12 col-md-6 pb-1">
+                        <a class="btn btn-success form-control " style="height:50px;" asp-action="Index">Back To Main</a>
+                    </div>
+                    <div class="col-12 col-md-6 pb-1">
+                        <button type="submit" value="Add to Cart" class="btn btn-primary form-control" style="height:50px;">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>

@@ -1,0 +1,101 @@
+﻿@model UdemySiparis.Models.ViewModels.CartVM
+
+<form method="post">
+	<br />
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-light ml-0">
+				<div class=" row container">
+					<div class="col-6">
+						<i class="fa fa-shopping-cart"></i> &nbsp;
+						<h4>Order Summary</h4>
+					</div>
+					<div class="col-6 text-end">
+						<a asp-action="Index" class="btn btn-outline-info bg-white text-dark btn-sm">Back to Cart</a>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="container rounded p-2">
+					<div class="row">
+						<div class="col-12">
+							<div class="row">
+								<h4 class="d-flex justify-content-between align-items-center mb-3">
+									<span class="text-primary">Shipping Informations:</span>
+								</h4>
+							</div>
+							<div class="row my-1">
+								<div class="col-3">
+									<label>Name</label>
+								</div>
+								<div class="col-9">
+									<input asp-for="OrderProduct.Name" class="form-control" />
+									<span asp-validation-for="OrderProduct.Name" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="row my-1">
+								<div class="col-3">
+									<label>Phone</label>
+								</div>
+								<div class="col-9">
+									<input asp-for="OrderProduct.CellPhone" class="form-control" />
+									<span asp-validation-for="OrderProduct.CellPhone" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="row my-1">
+								<div class="col-3">
+									<label>Street Address</label>
+								</div>
+								<div class="col-9">
+									<input asp-for="OrderProduct.Address" class="form-control" />
+									<span asp-validation-for="OrderProduct.Address" class="text-danger"></span>
+								</div>
+							</div>						
+							<div class="row my-1">
+								<div class="col-3">
+									<label>Postal Code</label>
+								</div>
+								<div class="col-9">
+									<input asp-for="OrderProduct.PostalCode" class="form-control" />
+									<span asp-validation-for="OrderProduct.PostalCode" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<h4 class="d-flex justify-content-between align-items-center mb-3">
+								<span class="text-primary">Order List:</span>
+							</h4>
+							<ul class="list-group mb-3">
+								@foreach(var details in Model.ListCart)
+								{
+								<li class="list-group-item d-flex justify-content-between">
+									<div>
+										<h6 class="my-0">@details.Product.Name</h6>
+										<small class="text-muted">Quantity: @details.Count</small>
+									</div>
+									<span class="text-muted">@((details.Price).ToString("c")) </span>
+								</li>
+								}								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="row">
+					<div class="col-12 col-md-8 pt-2">
+
+						<p style="color:maroon; font-size:14px;"><h3 class="text-primary">Total (₺) :  @Model.OrderProduct.OrderPrice.ToString("c")</h3>								
+						</p>
+
+						
+					</div>
+					<div class="col-12 col-md-4 py-4">
+						<button type="submit" value="Place Order" class="btn btn-success form-control">Order Confirmaiton</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
