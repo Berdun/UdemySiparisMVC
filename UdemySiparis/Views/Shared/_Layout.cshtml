@@ -12,23 +12,47 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UdemySiparis</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">XYZ Pet Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Anasayfa</a>
+
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Main Page</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="">Kategori</a>
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="">Ürünler</a>
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="Order">Orders</a>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown"
+                               href="#" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Admin Menus</a>
+
+                            <div class="dropdown-menu">
+
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Main Page</a>
+                                
+
+                                <div class="dropdown-divider"></div>
+
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="">Kategori</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="">Ürünler</a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                            </div>
+                        </li>
+                       
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
