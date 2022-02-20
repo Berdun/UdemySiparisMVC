@@ -5,13 +5,13 @@
 	<br />
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-dark text-light ml-0">
+			<div class="card-header bg-primary text-light ml-0">
 				<div class="container row">
 				<div class="col-12 d-none d-md-block col-md-6 pb-1">
-					<i class="fas fa-shopping-cart"></i> &nbsp; Order Summary
+				  Order
 				</div>
 				<div class="col-12 col-md-4 offset-md-2 text-right">
-					<a asp-action="Index" class="btn btn-outline-info form-control btn-sm">Back to Orders</a>
+					<a asp-action="Index" class="btn text-white btn-outline-info form-control btn-sm">Back to Orders</a>
 				</div>
 				</div>
 			</div>
@@ -53,12 +53,7 @@
 										<input asp-for="OrderProduct.PostalCode" type="text" class="form-control" />								
 								</div>
 							</div>
-							@*<div class="row my-1">
-								<div class="col-3">Email</div>
-								<div class="col-9">
-									<input asp-for="OrderProduct.AppUser.Email" readonly type="text" class="form-control" />
-								</div>
-							</div>*@
+						
 							<div class="row my-1">
 								<div class="col-3">Order Date</div>
 								<div class="col-9">
@@ -66,30 +61,14 @@
 									<input value="@Model.OrderProduct.OrderDate.ToShortDateString()" readonly type="text" class="form-control" />
 
 								</div>
-							</div>
-							<div class="row my-1">
-								<div class="col-3">Carrier</div>
-								<div class="col-9">								
-										
-									
-								</div>
-							</div>
-							<div class="row my-1">
-								<div class="col-3">Tracking</div>
-								<div class="col-9">
-									
-									
-								</div>
-							</div>							
+							</div>													
 						
-							<input type="submit" asp-action="UpdateOrderDetail" class="btn btn-warning form-control my-1" value="Update Order Details" />
-							
-
+							<input type="submit" asp-action="UpdateOrderDetails" class="btn btn-primary form-control my-1" value="Update Order Details" />
 
 						</div>
 						<div class="col-12 col-lg-5 offset-lg-1">
 							<h4 class="d-flex justify-content-between align-items-center mb-3">
-								<span class="text-primary">Order Summary</span>
+								<span class="text-primary">Orders : </span>
 							</h4>
 							<label class="btn btn-outline-primary form-control my-2">Order Status - @Model.OrderProduct.OrderStatus</label>
 
@@ -101,16 +80,16 @@
 											<div class="col-8">
 
 												<h6 class="my-0 text-primary">@detail.Product.Name</h6>
-												<small class="text-muted">Price : @detail.Price.ToString("c")</small><br />
+												<small class="text-muted">Price : @((detail.Price / detail.Count ).ToString("c"))</small><br />
 												<small class="text-muted">Quantity : @detail.Count</small>
 											</div>
 											<div class="col-4 text-end">
-												<p class="text-success">@((detail.Count * detail.Price).ToString("c"))</p>
+												<p class="text-success">@((detail.Price).ToString("c"))</p>
 											</div>
 										</div>
 									</li>
 								}
-								<li class="list-group-item bg-info">
+								<li class="list-group-item bg-primary">
 									<div class="row container">
 										<div class="col-6">
 											<h5 class="text-white">TOTAL </h5>
@@ -121,28 +100,15 @@
 									</div>
 								</li>
 							</ul>
-							@if (Model.OrderProduct.OrderStatus == "Shipped")
+								@if (Model.OrderProduct.OrderStatus =="Ordered")
 								{
-									<input type="submit" class="btn btn-success form-control my-1" value="Pay Now" />
-								}
-							
-								if (Model.OrderProduct.OrderStatus =="Approved")
-								{
-									<input type="submit" asp-action="StartProcessing" class="btn btn-primary form-control my-1" value="Start Processing" />
-								}
-								if (Model.OrderProduct.OrderStatus == "Proccess")
-								{
-									<input type="submit" onclick="return validateInput()"
-									asp-action="ShipOrder" class="btn btn-primary form-control my-1" value="Ship Order" />
-								}
-								
-								@if (Model.OrderProduct.OrderStatus !="Refund" &&
-										Model.OrderProduct.OrderStatus != "Cancel" &&
-								Model.OrderProduct.OrderStatus!="Shipped")
+									<input type="submit" asp-action="Delivered" class="btn btn-primary form-control my-1" value="Delivered Order" />
+								}			
+								@if (Model.OrderProduct.OrderStatus != "Cancel" &&
+								Model.OrderProduct.OrderStatus!="Delivered")
 								{
 									<input type="submit" asp-action="CancelOrder" class="btn btn-danger form-control my-1" value="Cancel Order" />
-								}
-							}
+								}							
 						</div>
 					</div>
 				</div>

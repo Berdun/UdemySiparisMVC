@@ -35,13 +35,10 @@
                         <td>@orderProduct.Name</td>
                         <td>@orderProduct.OrderPrice</td>
                         <td>
-                            <a asp-area="Admin" asp-controller="Order" asp-action="Crup" asp-route-id="@orderProduct.Id" class="btn btn-primary">
-                                Update
+                            <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@orderProduct.Id" class="btn btn-primary">
+                                Details
                             </a>
 
-                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');"  asp-area="Admin" asp-controller="Order" asp-action="Delete" asp-route-id="@orderProduct.Id" class="btn btn-danger">
-                                Delete
-                            </a>
                         </td>
                     </tr>
                 }
