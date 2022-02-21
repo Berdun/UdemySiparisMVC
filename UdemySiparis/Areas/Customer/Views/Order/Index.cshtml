@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h2>Ürün Listesi</h2>
+            <h2>Order List</h2>
         </div>
         <div class="col-6">
           
@@ -34,13 +34,9 @@
                         <td>@orderProduct.Id</td>
                         <td>@orderProduct.Name</td>
                         <td>@orderProduct.OrderPrice</td>
-                        <td>
-                            <a asp-area="Customer" asp-controller="Order" asp-action="Crup" asp-route-id="@orderProduct.Id" class="btn btn-primary">
-                                Update
-                            </a>
-
-                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');" asp-area="Customer" asp-controller="Order" asp-action="Delete" asp-route-id="@orderProduct.Id" class="btn btn-danger">
-                                Delete
+                        <td>     
+                            <a onclick="return confirm('Silmek istediğinize emin misiniz?');" asp-area="Customer" asp-controller="Order" asp-action="CancelOrder" asp-route-id="@orderProduct.Id" class="btn btn-danger">
+                                Cancel
                             </a>
                         </td>
                     </tr>

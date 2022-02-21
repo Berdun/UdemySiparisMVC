@@ -36,6 +36,7 @@ namespace UdemySiparis.Areas.Customer.Controllers
         }    
         
         [HttpPost]
+        [Authorize]
         public IActionResult Details(Cart cart)
         {
             var claimIdentity = (ClaimsIdentity)User.Identity;

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h2>Ürün Listesi</h2>
+            <h2>Order List</h2>
         </div>
         <div class="col-6">
            
@@ -21,7 +21,10 @@
                     </th>
                     <th>
                         Price
-                    </th>
+                    </th>       
+                     <th>
+                        Status
+                    </th>  
                     <th>
                         
                     </th>
@@ -34,6 +37,7 @@
                         <td>@orderProduct.Id</td>
                         <td>@orderProduct.Name</td>
                         <td>@orderProduct.OrderPrice</td>
+                        <td>@orderProduct.OrderStatus</td>
                         <td>
                             <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@orderProduct.Id" class="btn btn-primary">
                                 Details

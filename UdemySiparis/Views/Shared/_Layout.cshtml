@@ -43,7 +43,8 @@
                             <a class="nav-link text-dark" asp-area="Customer" asp-controller="Order" asp-action="">Order</a>
                         </li>
 
-
+                        @if (User.IsInRole("Admin"))
+                        {
                         <li class="nav-item dropdown">
 
                             <a class="nav-link dropdown-toggle"
@@ -77,13 +78,8 @@
                                  <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Add New User</a>
 
                             </div>
-
-
-                        </li>
-
-
-
-
+                        </li>   
+                        }
 
                     </ul>
                     <partial name="_LoginPartial" />

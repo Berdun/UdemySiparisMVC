@@ -8,6 +8,7 @@ using UdemySiparis.Models.ViewModels;
 namespace UdemySiparis.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize]
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -60,6 +61,7 @@ namespace UdemySiparis.Areas.Customer.Controllers
                 cart.Price = cart.Product.Price * cart.Count;
                 CartVM.OrderProduct.OrderPrice += (cart.Price);
             }
+
             return View(CartVM);
         }
 
@@ -112,6 +114,9 @@ namespace UdemySiparis.Areas.Customer.Controllers
 
             _unitOfWork.Cart.RemoveRange(Carts);
             _unitOfWork.Save();
+
+            var cartCount = _unitOfWork.Cart.GetAll(u => u.AppUserId == claim.Value).ToList().Count ;
+            HttpContext.Session.SetInt32("SessionCartCount", cartCount);
 
             return RedirectToAction(nameof(Index), "Home", new { area = "Customer" });
         }

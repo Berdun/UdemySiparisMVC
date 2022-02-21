@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UdemySiparis.Data.Repository.IRepository;
 using UdemySiparis.Models;
 
 namespace UdemySiparis.Areas.Admin.Controllers
 {
      [Area("Admin")]
+     [Authorize(Roles ="Admin")]
      public class CategoryController : Controller
      {
           private readonly IUnitOfWork _unitOfWork;
